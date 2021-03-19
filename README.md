@@ -1,3 +1,11 @@
+# FORK
+
+This fork is only to build and distribute the binary, no code changes.
+
+Built binary for armv7 attached to releases plus .deb for raspbian (that includes systemd service).
+
+arm64 not built as raspbian 64 does not have `/opt/vc` nor the `raspberry video renderer`.
+
 # Introduction
 
 An open-source implementation of an AirPlay mirroring server for the Raspberry Pi.
