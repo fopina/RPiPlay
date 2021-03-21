@@ -57,3 +57,14 @@ jobs:
           asset_path: build/rpiplay_arm_v7.tgz
           asset_name: rpiplay_arm_v7.tgz
           asset_content_type: application/gzip
+
+      - name: Upload Release Asset
+        id: upload-release-asset-2
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/rpiplay_1.2-1_armhf.deb
+          asset_name: rpiplay_1.2-1_armhf.deb
+          asset_content_type: application/vnd.debian.binary-package
