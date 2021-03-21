@@ -3,3 +3,4 @@ Version: 1.2
 Architecture: armhf
 Maintainer: Filipe Pina <fopina@skmobi.com>
 Description: An open-source AirPlay mirroring server for the Raspberry Pi (supports iOS 9 and up)
+Depends: libplist3, libavahi-compat-libdnssd1

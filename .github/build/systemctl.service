@@ -1,0 +1,13 @@
+[Unit]
+Description=An open-source AirPlay mirroring server for the Raspberry Pi
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+PIDFile=/run/rpiplay.pid
+ExecStart=/usr/bin/rpiplay -b off -n rpiplay -l
+ExecStop=-/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/rpiplay.pid
+TimeoutStopSec=5
+KillMode=mixed

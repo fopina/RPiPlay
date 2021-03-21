@@ -25,13 +25,21 @@ jobs:
         with:
           version: latest
 
+      - name: Prepare
+        id: prepare
+        run: |
+            TAG=${GITHUB_REF#refs/tags/v1.2-}
+            echo ::set-output name=tag_name::${TAG}
+
       - name: Build project
         run: |
           mkdir -p build
           docker buildx build \
             --platform linux/arm/v7 \
+            --build-arg BIN_VERSION=1.2 \
+            --build-arg DEB_VERSION=${{ steps.prepare.outputs.tag_name }} \
             -o build \
-            -f .github/workflows/Dockerfile.builder \
+            -f .github/build/Dockerfile.builder \
             .
           tar czf build/rpiplay_arm_v7.tgz -C build/ rpiplay
 
@@ -65,6 +73,29 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/rpiplay_1.2-1_armhf.deb
-          asset_name: rpiplay_1.2-1_armhf.deb
+          asset_path: build/rpiplay_1.2-${{ steps.prepare.outputs.tag_name }}_armhf.deb
+          asset_name: rpiplay_1.2-${{ steps.prepare.outputs.tag_name }}_armhf.deb
           asset_content_type: application/vnd.debian.binary-package
+
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+
+      - name: publish .deb to PPA
+        run: |
+          git fetch origin gh-pages
+          git checkout gh-pages
+          mv build/rpiplay_1.2-${{ steps.prepare.outputs.tag_name }}_armhf.deb .
+          git add rpiplay_1.2-${{ steps.prepare.outputs.tag_name }}_armhf.deb
+          rm -fr build
+          dpkg-scanpackages --multiversion . > Packages
+          gzip -k -f Packages
+          apt-ftparchive release . > Release
+          gpg --default-key "x" -abs -o - Release > Release.gpg
+          gpg --default-key "x" --clearsign -o - Release > InRelease
+          git config user.email "deb@bot.com"
+          git config user.name "debbot"
+          git commit -am 'new deb'
+          git push

@@ -13,8 +13,6 @@ RUN apt-get update \
 WORKDIR /rpiplay
 
 ARG FIRMWARE_VERSION=1.20210303
-ARG BIN_VERSION=1.2
-ARG DEB_VERSION=1
 
 # Download Raspberry firmware and unpack /opt/vc folder
 RUN curl -kL https://github.com/raspberrypi/firmware/archive/${FIRMWARE_VERSION}.tar.gz -o firmware.tgz \
@@ -29,12 +27,19 @@ WORKDIR /rpiplay/src/build
 RUN cmake ..
 RUN make
 
-WORKDIR /rpiplay/
-RUN mkdir -p /rpiplay/rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf/DEBIAN/
-RUN mkdir -p /rpiplay/rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf/user/bin
+ARG BIN_VERSION=1.2
+ARG DEB_VERSION=1
 
-COPY .github/workflows/debian.control /rpiplay/rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf/DEBIAN/control
-RUN cp src/build/rpiplay /rpiplay/rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf/user/bin/
+WORKDIR /rpiplay/rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf/
+RUN mkdir -p DEBIAN/
+RUN mkdir -p usr/bin
+RUN mkdir -p lib/systemd/system/
+
+WORKDIR /rpiplay/
+COPY .github/build/systemctl.service /rpiplay/rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf/lib/systemd/system/rpiplay.service
+COPY .github/build/debian.control /rpiplay/rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf/DEBIAN/control
+RUN sed -i "s/^Version: 1.2/Version: 1.2-${DEB_VERSION}/g" /rpiplay/rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf/DEBIAN/control
+RUN cp src/build/rpiplay /rpiplay/rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf/usr/bin/
 RUN dpkg-deb --build --root-owner-group rpiplay_${BIN_VERSION}-${DEB_VERSION}_armhf
 
 FROM scratch
