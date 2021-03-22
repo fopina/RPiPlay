@@ -2,7 +2,7 @@ Package: rpiplay
 Version: 1.2
 Architecture: armhf
 Maintainer: Filipe Pina <fopina@skmobi.com>
-Filename: https://x.com/rpipla_1.2-1_armhf.deb
+Filename: ./rpipla_1.2-1_armhf.deb
 Size: 930152
 MD5sum: 7c4650003bed53e668ab9164b75dd79b
 SHA1: 27d7a11e2c4c1c6f72f0e1e13ef6dbffc143fe6b
