@@ -1,0 +1,11 @@
+Package: rpiplay
+Version: 1.2
+Architecture: armhf
+Maintainer: Filipe Pina <fopina@skmobi.com>
+Filename: ./rpiplay_1.2-21_armhf.deb
+Size: 929884
+MD5sum: 2d3c614b4890234cf16704182c8cb38e
+SHA1: a11af641a15b76c520ad6dcc4b3f1f4182d6dd9b
+SHA256: 13c00887dc6e453910ad8aa8d89e81341e229ff30ab64805059aa0ceae6a0516
+Description: An open-source AirPlay mirroring server for the Raspberry Pi (supports iOS 9 and up)
+
