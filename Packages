@@ -1,59 +1,12 @@
 Package: rpiplay
-Version: 1.2
-Architecture: armhf
-Maintainer: Filipe Pina <fopina@skmobi.com>
-Depends: libplist3
-Filename: ./rpiplay_1.2-23_armhf.deb
-Size: 930120
-MD5sum: d95ccf60d748e58e5b44752d3528844f
-SHA1: 76bb9480df98a91cfd4f0ae98da9e0fd55b2df03
-SHA256: e6ef083972c71d806dc6b71bf93cd90a1f5817ba7fba11cc589a56473919ed7b
-Description: An open-source AirPlay mirroring server for the Raspberry Pi (supports iOS 9 and up)
-
-Package: rpiplay
-Version: 1.2
-Architecture: armhf
-Maintainer: Filipe Pina <fopina@skmobi.com>
-Filename: ./rpiplay_1.2-22_armhf.deb
-Size: 929828
-MD5sum: c8562245a80f2f51b82e1ae496c1be11
-SHA1: bf4e5aea95414872583fa9e77b29d46939b1bbcc
-SHA256: 94c5aa44b5f9bd2c63d0731ee4d46864f247a4c4684ac8f9de3301caf8a31c5e
-Description: An open-source AirPlay mirroring server for the Raspberry Pi (supports iOS 9 and up)
-
-Package: rpiplay
-Version: 1.2
+Version: 1.2-1
 Architecture: armhf
 Maintainer: Filipe Pina <fopina@skmobi.com>
 Depends: libplist3, libavahi-compat-libdnssd1
-Filename: ./rpiplay_1.2-24_armhf.deb
-Size: 930248
-MD5sum: 6df3f622b50768aa59be2c7d6416919d
-SHA1: 9092873133f7f08f1d5fb849e0f70299fda1b86a
-SHA256: 580f7e69395d52d05e6711e1f51aa43193110c87410f4e0ce6e5778b660d2ac3
-Description: An open-source AirPlay mirroring server for the Raspberry Pi (supports iOS 9 and up)
-
-Package: rpiplay
-Version: 1.2-25
-Architecture: armhf
-Maintainer: Filipe Pina <fopina@skmobi.com>
-Depends: libplist3, libavahi-compat-libdnssd1
-Filename: ./rpiplay_1.2-25_armhf.deb
-Size: 930056
-MD5sum: 8824a8b60942242aa334125a09b6ae2f
-SHA1: 7860a21d6b5dc90d0a106aa6ff4bd771e4c38ced
-SHA256: 582d04bc9c425b77e51e976659903bbad838e8cf97d16e95262492483db862c2
-Description: An open-source AirPlay mirroring server for the Raspberry Pi (supports iOS 9 and up)
-
-Package: rpiplay
-Version: 1.2-27
-Architecture: armhf
-Maintainer: Filipe Pina <fopina@skmobi.com>
-Depends: libplist3, libavahi-compat-libdnssd1
-Filename: ./rpiplay_1.2-27_armhf.deb
-Size: 930756
-MD5sum: ffde7b9ac66fe9f3b8ee2b3a17daa4ef
-SHA1: 30dc34d21424b39ad3e097eb54d39d3cbed61d83
-SHA256: fa3faa8a318eb2ce53510cf7273b619e9891ff8843f3ebd6d8f6597f5e2e8ea7
+Filename: ./rpiplay_1.2-1_armhf.deb
+Size: 930492
+MD5sum: 5a9db29e8fa82715fb036cf41c86ee40
+SHA1: 5c1c5b16e42cb07071b7d91e0b52184eefb49aa7
+SHA256: 73ce1cd0b386019579a227cf92ee12c525c99252e628eeb9753bdd7727a1d6d7
 Description: An open-source AirPlay mirroring server for the Raspberry Pi (supports iOS 9 and up)
 
