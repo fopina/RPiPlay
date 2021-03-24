@@ -6,6 +6,22 @@ Built binary for armv7 attached to releases plus .deb for raspbian (that include
 
 arm64 not built as raspbian 64 does not have `/opt/vc` nor the `raspberry video renderer`.
 
+## install with apt
+
+```
+echo 'deb https://fopina.github.io/RPiPlay/ ./' > /etc/apt/sources.list.d/rpiplay.list
+curl -s https://fopina.github.io/RPiPlay/KEY.gpg | apt-key add -
+apt update
+apt install rpiplay
+```
+
+Then enable (and start) rpiplay service
+
+```
+systemctl enable rpiplay
+systemctl start rpiplay
+```
+
 # Introduction
 
 An open-source implementation of an AirPlay mirroring server for the Raspberry Pi.
